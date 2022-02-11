@@ -1,6 +1,0 @@
-name: dev-postgre
-source: dev-postsgre
-type: raw_sql
-rawSql: select * from users;
-isSchema: false
-primaryKey: id
