@@ -1,0 +1,18 @@
+model: sadsada
+destination: sdfsvcx
+config:
+  mode: upsert
+  object: contact
+  mappings:
+    - to: name
+      from: name
+      type: standard
+    - to: email
+      from: email
+      type: standard
+  externalIdMapping:
+    to: id
+    from: test_id
+schedule:
+  type: interval
+schedulePaused: false
