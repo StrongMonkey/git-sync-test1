@@ -1,0 +1,21 @@
+model: sadsada
+destination: dfdsf
+config:
+  mode: upsert
+  object: contacts
+  mappings:
+    - to: email
+      from: email
+      type: standard
+    - to: phone
+      from: phone
+      type: standard
+  objectId: 0-1
+  externalIdMapping:
+    to: firstname
+    from: test_id
+    type: standard
+  associationMappings: []
+schedule:
+  type: manual
+schedulePaused: false
