@@ -1,0 +1,8 @@
+name: xxxx
+source: sfsdf
+type: custom
+customQuery:
+  name: mysql
+  type: sheet
+isSchema: false
+primaryKey: test_id
