@@ -1,0 +1,6 @@
+name: test-table-22
+source: dev-postsgre
+type: table
+tableName: public.users
+isSchema: false
+primaryKey: id
