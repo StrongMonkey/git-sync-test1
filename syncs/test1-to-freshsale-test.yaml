@@ -1,0 +1,28 @@
+model: test1
+destination: freshsale-test
+config:
+  mode: upsert
+  object: contact
+  mappings:
+    - to: first_name
+      from: first_name
+      type: standard
+    - to: last_name
+      from: last_name
+      type: standard
+    - to: emails
+      from: email
+      type: standard
+    - to: created_at
+      from: created_at
+      type: standard
+  customMappings:
+    - to: cf_foo
+      from: bio
+      type: standard
+  externalIdMapping:
+    to: email
+    from: id
+schedule:
+  type: manual
+schedulePaused: false
