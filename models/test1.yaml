@@ -1,4 +1,4 @@
-name: test3
+name: test1
 source: dev-postsgre
 type: table
 tableName: public.users
