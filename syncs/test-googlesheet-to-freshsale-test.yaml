@@ -1,0 +1,25 @@
+model: test-googlesheet
+destination: freshsale-test
+config:
+  mode: upsert
+  object: contact
+  mappings:
+    - to: first_name
+      from: Name
+      type: standard
+    - to: emails
+      from: Email
+      type: standard
+    - to: mobile_number
+      from: Phone
+      type: standard
+  customMappings:
+    - to: cf_foo
+      from: CUSTOM
+      type: standard
+  externalIdMapping:
+    to: email
+    from: Email
+schedule:
+  type: manual
+schedulePaused: false
