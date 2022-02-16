@@ -1,0 +1,8 @@
+name: test311
+source: sfsdf
+type: custom
+customQuery:
+  name: mysql
+  type: sheet
+isSchema: false
+primaryKey: test_id
