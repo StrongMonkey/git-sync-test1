@@ -1,4 +1,4 @@
-name: test-table-34
+name: test-table-33
 source: dev-postsgre
 type: table
 tableName: public.users
