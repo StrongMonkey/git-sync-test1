@@ -13,6 +13,5 @@ config:
   externalIdMapping:
     to: id
     from: test_id
-schedule:
-  type: interval
+schedule: {}
 schedulePaused: false
