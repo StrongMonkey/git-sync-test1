@@ -24,5 +24,9 @@ config:
     to: email
     from: id
 schedule:
-  type: manual
+  type: interval
+  schedule:
+    interval:
+      unit: day
+      quantity: 1
 schedulePaused: false
