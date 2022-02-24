@@ -1,6 +1,0 @@
-name: test-table
-source: dev-postsgre
-type: table
-tableName: public.users
-isSchema: false
-primaryKey: id

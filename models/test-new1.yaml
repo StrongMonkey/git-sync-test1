@@ -1,6 +1,0 @@
-name: test-raw-1
-source: dev-postsgre
-type: raw_sql
-rawSql: select * from users;
-isSchema: false
-primaryKey: id

@@ -1,8 +1,0 @@
-name: test-googlesheet
-source: sfsdf
-type: custom
-customQuery:
-  name: contacts
-  type: sheet
-isSchema: false
-primaryKey: id
