@@ -2,7 +2,7 @@ name: test1
 source: testgooglesheet
 type: custom
 customQuery:
-  name: contacts1
+  name: contacts
   type: sheet
 isSchema: false
 primaryKey: id
