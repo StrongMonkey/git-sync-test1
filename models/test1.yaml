@@ -5,4 +5,4 @@ customQuery:
   name: contacts
   type: sheet
 isSchema: false
-primaryKey: id
+primaryKey: Name
