@@ -1,0 +1,14 @@
+model: generate-random
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: POST
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  autoSyncColumns: true
+  subscribeChange: true
+  subscribeRemove: true
+schedule:
+  type: manual
+schedulePaused: false
