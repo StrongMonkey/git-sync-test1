@@ -4,7 +4,7 @@ config:
   mappings: []
   contentType: application/json
   changeMethod: POST
-  rowsPerBatch: 1000
+  rowsPerBatch: '10'
   subscribeAdd: true
   autoSyncColumns: true
   subscribeChange: true
