@@ -2,7 +2,7 @@ name: test-foo
 source: test-local-postgres
 type: raw_sql
 rawSql: >-
-  SELECT generate_series(200,250) AS id, md5(random()::text) AS descr,
+  SELECT generate_series(0,100) AS id, md5(random()::text) AS descr,
   md5(random()::text) AS foo
 isSchema: false
 primaryKey: id
