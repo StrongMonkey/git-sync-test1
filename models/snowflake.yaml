@@ -1,4 +1,5 @@
 name: snowflake
+source: sazxcc
 type: raw_sql
 rawSql: SELECT 1000 as id, 'fake' as decr union SELECT 1001, md5(RANDOM())
 isSchema: false
