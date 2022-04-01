@@ -1,0 +1,20 @@
+model: test-googlesheet-contact
+destination: freshsales
+config:
+  mode: update
+  object: contact
+  mappings:
+    - to: sales_accounts
+      from: account_id
+      type: standard
+  customMappings: []
+  externalIdMapping:
+    to: emails
+    from: Email
+schedule:
+  type: interval
+  schedule:
+    interval:
+      unit: minute
+      quantity: 2
+schedulePaused: true
