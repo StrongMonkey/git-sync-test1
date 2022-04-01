@@ -1,0 +1,18 @@
+model: test-foo
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  autoSyncColumns: true
+  disableBatching: true
+  subscribeChange: true
+schedule:
+  type: interval
+  schedule:
+    interval:
+      unit: minute
+      quantity: 1
+schedulePaused: true
