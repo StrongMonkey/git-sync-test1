@@ -1,5 +1,0 @@
-name: bigquery
-type: raw_sql
-rawSql: SELECT 1000 as id, 'fake' as decr union all SELECT 1001, 'fake'
-isSchema: false
-primaryKey: id
