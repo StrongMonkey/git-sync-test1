@@ -1,0 +1,8 @@
+name: test2
+source: testgooglesheet
+type: custom
+customQuery:
+  name: contacts
+  type: sheet
+isSchema: false
+primaryKey: Email
