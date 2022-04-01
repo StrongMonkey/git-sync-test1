@@ -1,0 +1,6 @@
+name: random
+source: test-local-postgres
+type: raw_sql
+rawSql: SELECT generate_series(1,50) AS id, md5(random()::text) AS descr
+isSchema: false
+primaryKey: id
