@@ -1,0 +1,8 @@
+name: test-googlesheet
+source: testgooglesheet
+type: custom
+customQuery:
+  name: mysql
+  type: sheet
+isSchema: false
+primaryKey: test_id
