@@ -10,5 +10,9 @@ config:
   subscribeChange: true
   subscribeRemove: true
 schedule:
-  type: manual
-schedulePaused: false
+  type: interval
+  schedule:
+    interval:
+      unit: minute
+      quantity: 1
+schedulePaused: true
