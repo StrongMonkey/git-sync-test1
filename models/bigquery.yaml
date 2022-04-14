@@ -1,6 +1,6 @@
 name: bigquery
 source: testasdsadas
 type: raw_sql
-rawSql: SELECT 1000 as id, 'fake' as decr union all SELECT 1001, 'fake'
+rawSql: SELECT 1000 as id, 'fake2' as decr union all SELECT 1001, 'fake3'
 isSchema: false
 primaryKey: id
