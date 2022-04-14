@@ -1,0 +1,6 @@
+name: test-data
+source: databrick-testing-n1ek9
+type: raw_sql
+rawSql: select explode(sequence(1, 90)) as id, random() as value
+isSchema: false
+primaryKey: id
