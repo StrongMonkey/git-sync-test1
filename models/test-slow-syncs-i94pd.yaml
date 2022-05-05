@@ -1,0 +1,6 @@
+name: test-slow-syncs
+source: test-posgresql
+type: raw_sql
+rawSql: 'select generate_series(0, 900000) as id, random() as foo '
+isSchema: false
+primaryKey: id
