@@ -1,0 +1,25 @@
+model: generate-random
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  autoSyncColumns: true
+  subscribeChange: true
+  subscribeRemove: true
+schedule:
+  type: visual_cron
+  schedule:
+    expressions:
+      - days:
+          friday: true
+          monday: true
+          sunday: true
+          tuesday: true
+          saturday: true
+          thursday: true
+          wednesday: true
+        time: '06:00'
+schedulePaused: true
