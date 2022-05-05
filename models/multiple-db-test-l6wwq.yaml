@@ -1,0 +1,6 @@
+name: multiple-db-test
+source: sazxcc
+type: raw_sql
+rawSql: select * from CI_SANDBOX.PUBLIC.petsmart_purchases
+isSchema: false
+primaryKey: USER_ID
