@@ -1,0 +1,19 @@
+model: multiple-db-test-l6wwq
+destination: mysql
+config:
+  mode: upsert
+  object: pet
+  mappings:
+    - to: owner
+      from: WORKSPACE_SLUG
+      type: standard
+  externalIdMapping:
+    to: name
+    from: WORKSPACE_NAME
+schedule:
+  type: interval
+  schedule:
+    interval:
+      unit: minute
+      quantity: 1
+schedulePaused: true
