@@ -1,0 +1,6 @@
+name: asdad
+source: sdadad-e18d5
+type: raw_sql
+rawSql: select WORKSPACE_NAME from ANALYTICS.CORE.WORKSPACE_FEATURES limit 50
+isSchema: false
+primaryKey: WORKSPACE_NAME
