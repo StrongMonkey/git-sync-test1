@@ -1,0 +1,15 @@
+model: test-migration-h4un6
+destination: mysql
+config:
+  mode: upsert
+  object: pet
+  mappings:
+    - to: owner
+      from: WORKSPACE_SLUG
+      type: standard
+  externalIdMapping:
+    to: name
+    from: WORKSPACE_NAME
+schedule:
+  type: manual
+schedulePaused: false
