@@ -1,0 +1,6 @@
+name: test-migration
+source: test-migration-1rkno
+type: raw_sql
+rawSql: select WORKSPACE_NAME from ANALYTICS.CORE.WORKSPACE_FEATURES limit 50
+isSchema: false
+primaryKey: WORKSPACE_NAME
