@@ -1,6 +1,6 @@
 name: multiple-db-test
 source: sazxcc
 type: raw_sql
-rawSql: select * from CI_SANDBOX.PUBLIC.petsmart_purchases
+rawSql: select * from ANALYTICS.CORE.WORKSPACE_FEATURES limit 50
 isSchema: false
-primaryKey: USER_ID
+primaryKey: WORKSPACE_ID
