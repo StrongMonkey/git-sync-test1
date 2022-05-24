@@ -1,0 +1,6 @@
+name: TEST
+source: test-permission-nar25
+type: raw_sql
+rawSql: select * from testdata.Persons
+isSchema: false
+primaryKey: PersonID
