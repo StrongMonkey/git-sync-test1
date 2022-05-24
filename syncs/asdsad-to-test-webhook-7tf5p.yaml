@@ -1,0 +1,13 @@
+model: asdsad-b9lgh
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  autoSyncColumns: true
+  subscribeChange: true
+schedule:
+  type: manual
+schedulePaused: false
