@@ -1,0 +1,6 @@
+name: asdsad
+source: test-2-b3u72
+type: raw_sql
+rawSql: select * from testdata.Persons
+isSchema: false
+primaryKey: PersonID
