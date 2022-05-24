@@ -1,0 +1,6 @@
+name: test-bigquery
+source: test-2-b3u72
+type: raw_sql
+rawSql: select * from complete-road-284903.amazon.users
+isSchema: false
+primaryKey: id
