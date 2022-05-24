@@ -1,0 +1,14 @@
+model: test-migration-h4un6
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  autoSyncColumns: true
+  subscribeChange: true
+  subscribeRemove: false
+schedule:
+  type: manual
+schedulePaused: false
