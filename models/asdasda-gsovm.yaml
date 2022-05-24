@@ -1,0 +1,10 @@
+name: asdasda
+source: daishan-test-2-qtf1q
+type: raw_sql
+rawSql: |-
+  SELECT
+    *
+  FROM
+    complete-road-284903.amazon.users
+isSchema: false
+primaryKey: id
