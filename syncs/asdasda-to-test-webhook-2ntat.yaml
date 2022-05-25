@@ -7,8 +7,9 @@ config:
   rowsPerBatch: 1000
   subscribeAdd: true
   autoSyncColumns: true
+  disableBatching: true
   subscribeChange: true
   subscribeRemove: true
 schedule:
   type: manual
-schedulePaused: false
+schedulePaused: true
