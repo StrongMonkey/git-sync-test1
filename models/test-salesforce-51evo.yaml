@@ -1,0 +1,242 @@
+name: test-salesforce
+source: sdadad-e18d5
+type: raw_sql
+rawSql: >-
+  with workspace_usage as (
+    select * from analytics.sales.workspace_usage
+    where workspace_id is not null
+  ),
+
+
+  /* These are the Salesforce tables used for creating/updating syncs via HT */
+
+  salesforce_contacts as (
+    select * from analytics.hightouch.salesforce_contacts
+  ),
+
+
+  salesforce_accounts as (
+    select * from analytics.hightouch.salesforce_accounts
+  ),
+
+
+  salesforce_organizations as (
+    select * from analytics.hightouch.salesforce_organizations
+  ),
+
+
+  salesforce_account_domains as (
+    select * from analytics.hightouch.salesforce_account_domains
+  ),
+
+
+  /* These are the cleaned up tables directly from SFDC, with deleted rows
+  removed */
+
+  stg_salesforce__workspaces as (
+    select * from analytics.staging.stg_salesforce__workspaces
+    where ht_workspace_id is not null
+  ),
+
+
+  stg_salesforce__accounts as (
+    select * from analytics.staging.stg_salesforce__accounts
+  ),
+
+
+  workspaces as (
+      select distinct
+        workspace_id,
+        workspace_name,
+        organization_id,
+        admin_user_id,
+        admin_email,
+        
+      lower(regexp_substr(admin_email, '@(.+)', 1, 1, 'e', 1))
+   as admin_email_domain,
+        workspace_created_at,
+        n_paused_syncs,
+        n_enabled_syncs,
+        successful_syncs_last_month,
+        failed_syncs_last_month,
+        sync_rows_last_month,
+        source_types_agg,
+        destination_types_agg,
+        n_destination_types,
+        n_models,
+        n_sources,
+        n_users,
+        sync_first_created,
+        sync_last_created,
+        sync_last_run,
+        external_bucket_enabled,
+        dbt_enabled,
+        git_sync_enabled,
+        audiences_enabled,
+        monthly_active_workspace
+      from workspace_usage
+      where workspace_id is not null
+  ),
+
+
+  workspace_owner as (
+      select distinct
+          workspaces.workspace_id,
+          admin_email,
+          first_value (salesforce_contacts.external_id) ignore nulls over (partition by admin_email order by created_date asc nulls last) as workspace_owner_external_id
+      from workspaces
+      left join salesforce_contacts on workspaces.admin_email = salesforce_contacts.email
+  ),
+
+
+  existing_salesforce_workspaces as (
+      select distinct
+          'Existing' as sync_type,
+          coalesce(salesforce_organizations.account_external_id, salesforce_accounts.external_id) as account_external_id,
+          coalesce(salesforce_organizations.account_owner_id, salesforce_accounts.account_owner_id) as account_owner_id,
+          workspace_owner.workspace_owner_external_id,
+          sfdc_workspace_id,
+          coalesce(workspaces.workspace_id, workspace_c.ht_workspace_id) as workspace_id,
+          workspaces.workspace_name,
+          workspaces.organization_id,
+          workspaces.admin_user_id,
+          workspaces.admin_email,
+          workspaces.workspace_created_at,
+          workspaces.n_paused_syncs,
+          workspaces.n_enabled_syncs,
+          workspaces.successful_syncs_last_month,
+          workspaces.failed_syncs_last_month,
+          workspaces.sync_rows_last_month,
+          workspaces.source_types_agg,
+          workspaces.destination_types_agg,
+          workspaces.n_destination_types,
+          workspaces.n_models,
+          workspaces.n_sources,
+          workspaces.n_users,
+          workspaces.sync_first_created,
+          workspaces.sync_last_created,
+          workspaces.sync_last_run,
+          workspaces.external_bucket_enabled,
+          workspaces.dbt_enabled,
+          workspaces.git_sync_enabled,
+          workspaces.audiences_enabled,
+          monthly_active_workspace
+      from stg_salesforce__workspaces as workspace_c
+      join workspaces on workspace_c.ht_workspace_id = workspaces.workspace_id
+      left join salesforce_organizations on workspaces.organization_id = salesforce_organizations.organization_id
+      left join salesforce_accounts on workspace_c.account_id = salesforce_accounts.account_id
+      left join workspace_owner on workspace_c.ht_workspace_id = workspace_owner.workspace_id
+        and workspace_c.ht_workspace_id is not null
+      where salesforce_accounts.account_name != 'Hightouch Catch-All Account'
+  ),
+
+
+  existing_salesforce_workspaces_in_hold_public as (
+      select distinct
+          case
+              when coalesce(salesforce_account_domains.account_external_id, '0015e-00000-EfHr0AAF') = '0015e-00000-EfHr0AAF' then 'Existing'
+              else 'Existing - Moving from Catch All'
+           end as sync_type,
+          coalesce(salesforce_account_domains.account_external_id, '0015e-00000-EfHr0AAF') as account_external_id,
+          stg_salesforce__accounts.account_owner_id,
+          workspace_owner.workspace_owner_external_id,
+          sfdc_workspace_id,
+          workspaces.workspace_id,
+          workspaces.workspace_name,
+          workspaces.organization_id,
+          workspaces.admin_user_id,
+          workspaces.admin_email,
+          workspaces.workspace_created_at,
+          workspaces.n_paused_syncs,
+          workspaces.n_enabled_syncs,
+          workspaces.successful_syncs_last_month,
+          workspaces.failed_syncs_last_month,
+          workspaces.sync_rows_last_month,
+          workspaces.source_types_agg,
+          workspaces.destination_types_agg,
+          workspaces.n_destination_types,
+          workspaces.n_models,
+          workspaces.n_sources,
+          workspaces.n_users,
+          workspaces.sync_first_created,
+          workspaces.sync_last_created,
+          workspaces.sync_last_run,
+          workspaces.external_bucket_enabled,
+          workspaces.dbt_enabled,
+          workspaces.git_sync_enabled,
+          workspaces.audiences_enabled,
+          monthly_active_workspace
+      from stg_salesforce__workspaces as workspace_c
+      left join stg_salesforce__accounts on workspace_c.account_id = stg_salesforce__accounts.account_id
+      left join workspaces on workspace_c.ht_workspace_id = workspaces.workspace_id
+      left join workspace_owner on workspace_c.ht_workspace_id = workspace_owner.workspace_id
+      left join salesforce_account_domains on workspaces.admin_email_domain  = salesforce_account_domains.domain
+          and salesforce_account_domains.account_external_id != '0015e-00000-EfHr0AAF'
+      left join salesforce_accounts
+          on salesforce_accounts.external_id = coalesce(salesforce_account_domains.account_external_id, '0015e-00000-EfHr0AAF')
+      where stg_salesforce__accounts.account_name = 'Hightouch Catch-All Account'
+      and workspace_c.ht_workspace_id is not null
+  ),
+
+
+  new_salesforce_workspaces as (
+
+      select distinct
+          'New' as sync_type,
+          coalesce(salesforce_account_domains.account_external_id, '0015e-00000-EfHr0AAF') as account_external_id,
+          salesforce_accounts.account_owner_id,
+          workspace_owner.workspace_owner_external_id,
+          sfdc_workspace_id,
+          workspaces.workspace_id,
+          workspaces.workspace_name,
+          workspaces.organization_id,
+          workspaces.admin_user_id,
+          workspaces.admin_email,
+          workspaces.workspace_created_at,
+          workspaces.n_paused_syncs,
+          workspaces.n_enabled_syncs,
+          workspaces.successful_syncs_last_month,
+          workspaces.failed_syncs_last_month,
+          workspaces.sync_rows_last_month,
+          workspaces.source_types_agg,
+          workspaces.destination_types_agg,
+          workspaces.n_destination_types,
+          workspaces.n_models,
+          workspaces.n_sources,
+          workspaces.n_users,
+          workspaces.sync_first_created,
+          workspaces.sync_last_created,
+          workspaces.sync_last_run,
+          workspaces.external_bucket_enabled,
+          workspaces.dbt_enabled,
+          workspaces.git_sync_enabled,
+          workspaces.audiences_enabled,
+          monthly_active_workspace
+      from workspaces
+      left join stg_salesforce__workspaces as workspace_c on workspace_c.ht_workspace_id = workspaces.workspace_id
+      left join salesforce_account_domains on workspaces.admin_email_domain  = salesforce_account_domains.domain
+          and salesforce_account_domains.account_external_id != '0015e-00000-EfHr0AAF'
+      left join salesforce_accounts on salesforce_accounts.external_id = coalesce(salesforce_account_domains.account_external_id, '0015e-00000-EfHr0AAF')
+      left join workspace_owner on workspace_c.ht_workspace_id = workspace_owner.workspace_id
+      where workspace_c.sfdc_workspace_id is null
+  ),
+
+
+
+  final as (
+    select * from existing_salesforce_workspaces
+    union all
+    select * from existing_salesforce_workspaces_in_hold_public
+    union all
+    select * from new_salesforce_workspaces
+
+  )
+
+
+  select workspace_id::Number(38,5) as workspace_id from final
+
+  where workspace_id is not null
+
+  order by sync_type
+isSchema: false
+primaryKey: WORKSPACE_ID
