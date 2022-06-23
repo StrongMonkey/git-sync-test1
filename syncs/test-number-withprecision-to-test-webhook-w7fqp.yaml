@@ -1,0 +1,15 @@
+model: test-number-withprecision-wqpvb
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  autoSyncColumns: true
+  disableBatching: true
+  subscribeChange: true
+  subscribeRemove: true
+schedule:
+  type: manual
+schedulePaused: false
