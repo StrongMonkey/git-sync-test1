@@ -1,0 +1,6 @@
+name: asdasd
+source: test-postgreql-9qkbn
+type: raw_sql
+rawSql: select 3 as id
+isSchema: false
+primaryKey: id
