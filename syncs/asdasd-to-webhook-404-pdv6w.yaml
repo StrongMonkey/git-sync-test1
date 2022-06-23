@@ -5,6 +5,7 @@ config:
   contentType: application/json
   changeMethod: PUT
   rowsPerBatch: 1000
+  skipFirstRun: true
   subscribeAdd: true
   autoSyncColumns: true
   subscribeChange: true
