@@ -1,0 +1,6 @@
+name: sdfdsf
+source: sdadad-e18d5
+type: raw_sql
+rawSql: select 1 as foo
+isSchema: false
+primaryKey: FOO
