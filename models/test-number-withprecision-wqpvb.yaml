@@ -1,0 +1,6 @@
+name: test-number-withprecision
+source: sdadad-e18d5
+type: raw_sql
+rawSql: 'select CAST(2 AS NUMBER(38, 5)) as id union all select 1 '
+isSchema: false
+primaryKey: ID
