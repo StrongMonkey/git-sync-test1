@@ -1,0 +1,15 @@
+model: test-bug-report-6mbei
+destination: mysql
+config:
+  mode: upsert
+  object: pet
+  mappings:
+    - to: species
+      from: COUNT(TECH)
+      type: standard
+  externalIdMapping:
+    to: name
+    from: CONTACT_ID
+schedule:
+  type: manual
+schedulePaused: false
