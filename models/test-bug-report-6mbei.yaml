@@ -1,0 +1,31 @@
+name: test-bug-report
+source: sdadad-e18d5
+type: raw_sql
+rawSql: |-
+  with t1 as (with clearbit as (
+    select distinct
+    *,
+    trim(value::string) as tech
+      FROM staging.stg_salesforce__clearbit,
+      lateral split_to_table(CBIT_COMPANY_TECH_FULL_C, ',')
+
+    )
+    
+    select distinct
+    CBIT_CONTACT_C as contact_id,
+    CBIT_CONTACT_C,
+    CBIT_EMAIL_C,
+    CBIT_COMPANY_DOMAIN_C,
+    clearbit.tech,
+    destination_type,
+    CBIT_COMPANY_DOMAIN_C,
+    CBIT_COMPANY_METRICS_ESTIMATED_ANNUAL_REVENUE_C,
+    CBIT_COMPANY_METRICS_RAISED_C
+    
+    from clearbit
+    join public.clearbit_destination_mappings map on clearbit.tech = map.tech
+    where map.tech is not null)
+  SElect CONTACT_ID, COUNT(TECH) FROM T1 
+  GROUP BY CONTACT_ID limit 10
+isSchema: false
+primaryKey: CONTACT_ID
