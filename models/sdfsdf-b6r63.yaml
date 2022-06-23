@@ -1,0 +1,6 @@
+name: sdfsdf
+source: bigquery-test-again-t6o0e
+type: table
+tableName: testdata.fake_accounts
+isSchema: false
+primaryKey: row_num
