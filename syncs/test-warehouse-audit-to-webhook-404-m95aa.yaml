@@ -1,0 +1,14 @@
+model: test-warehouse-audit-a7he2
+destination: webhook-404-sf4oj
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  autoSyncColumns: true
+  subscribeChange: true
+  subscribeRemove: true
+schedule:
+  type: manual
+schedulePaused: false
