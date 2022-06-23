@@ -1,6 +1,6 @@
 name: test-bigquery
 source: test-2-b3u72
 type: raw_sql
-rawSql: select * from complete-road-284903.amazon.users
+rawSql: select DISTINCT CITY AS FOO_BAR from complete-road-284903.amazon.users
 isSchema: false
-primaryKey: id
+primaryKey: FOO_BAR
