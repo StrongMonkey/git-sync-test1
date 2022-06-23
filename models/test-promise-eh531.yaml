@@ -1,0 +1,6 @@
+name: test-promise
+source: sdadad-e18d5
+type: raw_sql
+rawSql: select SYNC_REQUEST_ID from core.runs
+isSchema: false
+primaryKey: SYNC_REQUEST_ID
