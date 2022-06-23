@@ -8,7 +8,7 @@ config:
   subscribeAdd: true
   autoSyncColumns: true
   subscribeChange: true
-  subscribeRemove: false
+  subscribeRemove: true
 schedule:
   type: manual
 schedulePaused: false
