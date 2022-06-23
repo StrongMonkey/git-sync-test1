@@ -1,0 +1,6 @@
+name: test-bigint-migration
+source: bigquery-test-again-t6o0e
+type: raw_sql
+rawSql: 'select CAST(1 AS BIGINT) AS id '
+isSchema: false
+primaryKey: id
