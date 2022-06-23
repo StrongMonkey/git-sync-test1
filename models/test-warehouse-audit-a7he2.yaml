@@ -1,0 +1,6 @@
+name: test-warehouse-audit
+source: sdadad-e18d5
+type: raw_sql
+rawSql: SELECT 1.00 AS ID union select 2.00 union select 3.00
+isSchema: false
+primaryKey: ID
