@@ -1,6 +1,6 @@
 name: asdasd
 source: sdadad-e18d5
 type: raw_sql
-rawSql: select 1 as id, 'foo' as name union select 1, 'bar'
+rawSql: select 1 as id, 'foo' as name
 isSchema: false
 primaryKey: ID
