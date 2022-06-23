@@ -1,0 +1,12 @@
+model: test-promise-eh531
+destination: mysql
+config:
+  mode: upsert
+  object: pet
+  mappings: []
+  externalIdMapping:
+    to: name
+    from: SYNC_ID
+schedule:
+  type: manual
+schedulePaused: false
