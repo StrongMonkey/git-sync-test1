@@ -1,4 +1,4 @@
-name: test-foo
+name: test-foos3
 source: test-local-postgres
 type: raw_sql
 rawSql: >-
