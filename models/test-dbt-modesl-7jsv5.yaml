@@ -1,0 +1,6 @@
+name: test-dbt-modesl
+source: sdadad-e18d5
+type: dbt_model
+dbtModel: model.hightouch.active_syncs
+isSchema: false
+primaryKey: SYNC_ID
