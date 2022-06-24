@@ -1,4 +1,4 @@
-name: test-timestamp-primary-key
+name: test-timestamp-primary-key-yo
 source: daishan-test-2-qtf1q
 type: raw_sql
 rawSql: select * from testdata.users;
