@@ -11,4 +11,4 @@ config:
   subscribeRemove: true
 schedule:
   type: manual
-schedulePaused: false
+schedulePaused: true
