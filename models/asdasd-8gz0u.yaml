@@ -1,6 +1,6 @@
 name: asdasd
 source: test-postgreql-9qkbn
 type: raw_sql
-rawSql: select 3 as id
+rawSql: select gen_random_uuid () as id
 isSchema: false
 primaryKey: id
