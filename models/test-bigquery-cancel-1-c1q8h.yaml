@@ -1,6 +1,6 @@
 name: test-bigquery-cancel-1
 source: daishan-test-2-qtf1q
 type: raw_sql
-rawSql: SELECT * FROM testdata.fake_accounts limit 10
+rawSql: SELECT * FROM testdata.fake_accounts
 isSchema: false
 primaryKey: row_num
