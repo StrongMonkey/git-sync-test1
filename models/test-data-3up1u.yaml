@@ -1,6 +1,6 @@
 name: test-data
 source: databrick-testing-n1ek9
 type: raw_sql
-rawSql: select CAST(1.23 AS DECIMAL(3, 2)) as id, random() as value
+rawSql: select 1 as id, random() as value union all select 2, random()
 isSchema: false
 primaryKey: id
