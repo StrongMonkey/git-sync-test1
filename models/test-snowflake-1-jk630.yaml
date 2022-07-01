@@ -1,0 +1,6 @@
+name: test-snowflake-1
+source: sazxcc
+type: raw_sql
+rawSql: SELECT 1 as id union all select 2
+isSchema: false
+primaryKey: ID
