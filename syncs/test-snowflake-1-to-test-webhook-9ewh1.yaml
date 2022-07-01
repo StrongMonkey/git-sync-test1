@@ -1,0 +1,16 @@
+model: test-snowflake-1-jk630
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  configVersion: 0
+  autoSyncColumns: true
+  disableBatching: true
+  subscribeChange: true
+  subscribeRemove: true
+schedule:
+  type: manual
+schedulePaused: false
