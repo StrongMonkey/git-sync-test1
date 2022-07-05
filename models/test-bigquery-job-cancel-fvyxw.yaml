@@ -1,4 +1,4 @@
-name: test-bigquery-job-cancel
+name: test-bigquery-job-cancel-1
 source: daishan-test-2-qtf1q
 type: table
 tableName: hightouch_audit.sync_runs
