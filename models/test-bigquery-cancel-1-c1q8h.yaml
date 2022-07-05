@@ -1,4 +1,4 @@
-name: test-bigquery-cancel-1123
+name: test-bigquery-cancel-112323
 source: daishan-test-2-qtf1q
 type: raw_sql
 rawSql: SELECT * FROM testdata.fake_accounts limit 10
