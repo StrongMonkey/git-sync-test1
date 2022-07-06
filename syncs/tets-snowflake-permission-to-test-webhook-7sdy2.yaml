@@ -1,0 +1,15 @@
+model: tets-snowflake-permission-6eiir
+destination: test-webhook
+config:
+  mappings: []
+  contentType: application/json
+  changeMethod: PUT
+  rowsPerBatch: 1000
+  subscribeAdd: true
+  configVersion: 0
+  autoSyncColumns: true
+  subscribeChange: true
+  subscribeRemove: true
+schedule:
+  type: manual
+schedulePaused: false
