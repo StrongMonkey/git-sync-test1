@@ -1,0 +1,6 @@
+name: tets-snowflake-permission
+source: test-snowflake-permission-y86k7
+type: raw_sql
+rawSql: 'select 1 '
+isSchema: false
+primaryKey: '1'
