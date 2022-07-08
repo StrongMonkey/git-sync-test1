@@ -1,4 +1,4 @@
-name: vbv
+name: vbv-12asd
 source: test-gcp-snowflake-208jh
 type: raw_sql
 rawSql: select 1 as id
