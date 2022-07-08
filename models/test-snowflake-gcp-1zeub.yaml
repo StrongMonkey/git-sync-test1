@@ -1,4 +1,4 @@
-name: test-snowflake-gcp-1
+name: test-snowflake-gcp-2
 source: test-gcp-snowflake-208jh
 type: raw_sql
 rawSql: select 1 as id
