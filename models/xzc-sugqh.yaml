@@ -1,4 +1,4 @@
-name: xzc
+name: xzc-123
 source: test-gcp-snowflake-208jh
 type: raw_sql
 rawSql: select 1 as id
