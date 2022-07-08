@@ -1,0 +1,6 @@
+name: vbv
+source: test-gcp-snowflake-208jh
+type: raw_sql
+rawSql: select 1 as id
+isSchema: false
+primaryKey: ID
